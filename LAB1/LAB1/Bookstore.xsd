@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.mini.pw.edu.pl/~okulewiczm/" xmlns="http://www.mini.pw.edu.pl/~okulewiczm/">
+  
+  <!-- Types -->
+    <xs:complexType name="Person">
+      <xs:sequence>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="surname" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  
+    <xs:complexType name="Publication">
+      <xs:all>
+        <xs:element name="Author" >
+          <xs:keyref name="Person" refer="Person">
+            <xs:selector xpath=""/>
+          </xs:keyref>
+        </xs:element>
+        <xs:element name="title" type="xs:string"/>
+      </xs:all>
+    </xs:complexType>
+
+
+  <!-- Elements -->
+
+  
+  <!-- Objects -->
+  
+  <xs:element name="Bookstore">
+    <xs:complexType>
+      <xs:sequence>
+        
+          <xs:element name="Books">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Book" type="Publication"/>
+              </xs:sequence>
+            </xs:complexType>  
+          </xs:element>
+
+          <xs:element name="Journals">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Journal">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Editor" type="Person" maxOccurs="1" minOccurs="1"/>
+                      <xs:element name="Article" type="Publication"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                  </xs:element> 
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+
+        <xs:element name="People">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Person" type="Person"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

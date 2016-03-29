@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Bookstore xmlns="http://www.mini.pw.edu.pl/~okulewiczm/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.mini.pw.edu.pl/~okulewiczm/ Bookstore.xsd">
+  <Books>
+    <Book>
+      <title>
+
+      </title>
+      <Author>
+        <name>
+
+        </name>
+        <surname>
+
+        </surname>
+      </Author>
+
+    </Book>
+  </Books>
+  
+  <Journals>
+    <Journal>
+      <Editor>
+        <name>
+          
+        </name>
+        <surname>
+          
+        </surname>
+      </Editor>
+      <Article>
+        <Author>
+          <name>
+
+          </name>
+          <surname>
+
+          </surname>
+        </Author>
+        <title>
+          
+        </title>
+      </Article>
+    </Journal>
+  </Journals>
+
+  <People>
+    <Person>
+      <name>
+        
+      </name>
+      <surname>
+        
+      </surname>
+    </Person>
+  </People>
+  
+</Bookstore>

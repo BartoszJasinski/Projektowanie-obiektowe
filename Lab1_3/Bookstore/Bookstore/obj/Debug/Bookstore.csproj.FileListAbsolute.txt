@@ -1,0 +1,5 @@
+C:\Users\bartosz\Documents\Visual Studio 2015\Projects\PO\Lab1_3\Bookstore\Bookstore\bin\Debug\Bookstore.dll
+C:\Users\bartosz\Documents\Visual Studio 2015\Projects\PO\Lab1_3\Bookstore\Bookstore\bin\Debug\Bookstore.pdb
+C:\Users\bartosz\Documents\Visual Studio 2015\Projects\PO\Lab1_3\Bookstore\Bookstore\obj\Debug\Bookstore.csprojResolveAssemblyReference.cache
+C:\Users\bartosz\Documents\Visual Studio 2015\Projects\PO\Lab1_3\Bookstore\Bookstore\obj\Debug\Bookstore.dll
+C:\Users\bartosz\Documents\Visual Studio 2015\Projects\PO\Lab1_3\Bookstore\Bookstore\obj\Debug\Bookstore.pdb

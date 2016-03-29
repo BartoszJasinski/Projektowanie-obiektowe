@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+  attributeFormDefault="unqualified"
+  elementFormDefault="qualified"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://bookstore.mini.pw.edu.pl/"
+  xmlns:b="http://bookstore.mini.pw.edu.pl/"
+  >
+  <!--
+xmlns="http://bookstore.mini.pw.edu.pl/"
+-->
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="Surname" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="PersonReference">
+    <xs:attribute name="ref" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="Publication">
+    <xs:sequence>
+      <xs:element name="AuthorReference" minOccurs="1" maxOccurs="unbounded" type="b:PersonReference" />
+    </xs:sequence>
+    <xs:attribute name="title" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="Book">
+    <xs:complexContent>
+      <xs:extension base="b:Publication">
+        <xs:attribute name="price" type="b:positiveDecimal" use="required" />
+        <xs:attribute name="category" type="b:itemCategory" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+  <xs:simpleType name="positiveDecimal">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IT" />
+      <xs:enumeration value="Mathematics" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="Bookstore">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Books">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Book" minOccurs="0" maxOccurs="unbounded" type="b:Book" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Journals">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Journal" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="Article" type="b:Publication" />
+                    <xs:element name="EditorReference" minOccurs="1" maxOccurs="unbounded" type="b:PersonReference" />
+                  </xs:sequence>
+                  <xs:attribute name="price" type="b:positiveDecimal" use="required" />
+                  <xs:attribute name="category" type="b:itemCategory" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="People">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Person" type="b:Person" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:key name="PERSON_ID">
+      <xs:selector xpath="b:People/b:Person" />
+      <xs:field xpath="@id" />
+    </xs:key>
+    <xs:keyref name="ATHBK_PERSON_ID" refer="b:PERSON_ID">
+      <xs:selector xpath="b:Books/b:Book/b:AuthorReference" />
+      <xs:field xpath="@ref" />
+    </xs:keyref>
+    <xs:keyref name="ATHART_PERSON_ID" refer="b:PERSON_ID">
+      <xs:selector xpath="b:Journals/b:Journal/b:Article/b:AuthorReference" />
+      <xs:field xpath="@ref" />
+    </xs:keyref>
+    <xs:keyref name="EDITJRL_PERSON_ID" refer="b:PERSON_ID">
+      <xs:selector xpath="b:Journals/b:Journal/b:EditorReference" />
+      <xs:field xpath="@ref" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://bookstore.mini.pw.edu.pl/"
+           xmlns:b="http://bookstore.mini.pw.edu.pl/">
+  
+  --><!--TYPES--><!--
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="surname" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" />
+  </xs:complexType>
+  
+  <xs:complexType name="PersonReference">
+    <xs:attribute name="ref" type="xs:string" />
+  </xs:complexType>
+  
+   <xs:complexType name="Publication">
+       <xs:sequence>
+         <xs:element name="AuthorReference" type="b:PersonReference"/>
+       </xs:sequence>
+     <xs:attribute name="title" type="b:tit" use="required" >
+      
+     </xs:attribute>
+   </xs:complexType>
+
+  <xs:simpleType name="tit">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([A-Z][a-z]* ?)*"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="price" >
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemsCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IT" />
+      <xs:enumeration value="Mathematics" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Book">
+    <xs:complexContent>
+      <xs:extension base="b:Publication">
+        <xs:sequence>
+          <xs:element name="price" type="b:price" maxOccurs="1"/>
+          <xs:element name="category" type="b:itemsCategory" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  --><!--<xs:complexType name="Journal">
+    <xs:complexContent>
+      <xs:extension base="b:Publication">
+        <xs:sequence>
+          <xs:element name="category" type="b:itemsCategory"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>--><!--
+  
+  
+  <xs:element name="Bookstore">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Books">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Book" maxOccurs="unbounded" type="b:Book" />
+              
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="Journals">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Journal" maxOccurs="unbounded">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="EditorReference" minOccurs="1" maxOccurs="unbounded" type="b:PersonReference"/>
+                <xs:element name="article" type="b:Publication" />
+              </xs:sequence>
+              <xs:attribute name="price" type="b:price"/>
+              <xs:attribute name="category" type="b:itemsCategory"/>
+            </xs:complexType>
+          </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="People">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Pearson" type="b:Person" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        
+        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>-->

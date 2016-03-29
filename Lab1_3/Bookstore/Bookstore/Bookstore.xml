@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="Bookstore.xslt"?>
+
+<Bookstore xmlns="http://bookstore.mini.pw.edu.pl/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://bookstore.mini.pw.edu.pl/ Bookstore.xsd"
+           >
+  <Books>
+    <Book title="as" category="IT" price="12">
+      <AuthorReference ref="smithj" />
+    </Book>
+    <Book title="Discrete Mathematics" category="IT" price="12">
+      <AuthorReference ref="knuthd" />
+    </Book>
+    <Book title="Concrete Mathematics" category="IT" price="12">
+      <AuthorReference ref="knuthd" />
+    </Book>
+    <Book title="Continuous Mathematics" category="IT" price="12">
+      <AuthorReference ref="knuthd" />
+    </Book>
+  </Books>
+  <Journals>
+    <Journal category="IT" price="12">
+      <Article title="10 important tasks">
+        <AuthorReference ref="knuthd" />
+      </Article>
+      <Article title="What I have found?">
+        <AuthorReference ref="smithj" />
+      </Article>
+      <EditorReference ref="doej" />
+    </Journal>
+  </Journals>
+  <People>
+    <Person id="doej">
+      <Name>Joe</Name>
+      <Surname>Doe</Surname>
+    </Person>
+    <Person id="smithj">
+      <Name>John</Name>
+      <Surname>Smith</Surname>
+    </Person>
+    <Person id="knuthd">
+      <Name>Donald</Name>
+      <Surname>Knuth</Surname>
+    </Person>
+  </People>
+  </Bookstore>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8" ?>
+
+<Bookstore xmlns="http://bookstore.mini.pw.edu.pl/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://bokstore.mini.pw.edu.pl/ Bookstore.xsd">
+  <Books>
+    <Book title="AFDFasfdfFDDFSFZsd"> 
+      <author>
+        <name>
+
+        </name>
+        <surname>
+
+        </surname>
+      </author>
+     
+     
+    </Book>
+    <Book title="">
+    <author>
+      <name>
+
+      </name>
+      <surname>
+
+      </surname>
+    </author>
+  </Book>
+  </Books>
+
+  <Journals>
+    <Journal>
+      <editor>
+        <name>
+
+        </name>
+        <surname>
+
+        </surname>
+      </editor>
+      <article title="dfd fdsf">
+        <author>
+          <name>
+            
+          </name>
+          <surname>
+            
+          </surname>
+        </author>
+      </article>
+
+
+    </Journal>
+
+    <Journal>
+      <editor>
+        <name>
+
+        </name>
+        <surname>
+
+        </surname>
+      </editor>
+      <article title="">
+        <author>
+          <name>
+
+          </name>
+          <surname>
+
+          </surname>
+        </author>
+      </article>
+    </Journal>
+  </Journals>
+
+  <People>
+    
+  </People>
+</Bookstore>-->
